@@ -1,4 +1,4 @@
-from typing import List, Type, TypeVar, Dict, Any
+from typing import List, Type, Tuple, Dict, Any
 
 from .Utility.sparse_pool import SparsePool
 from .system_types import Entity
@@ -16,7 +16,7 @@ class ComponentContainer():
         for component_type in self._components:
             self._components[component_type].reset()
             
-    def get_components(self, entity: Entity, component_types: List[Type]) -> Dict:
+    def get_components(self, entity: Entity, component_types: List[Type]) -> Tuple:
         result = []
         
         for component_type in component_types:
