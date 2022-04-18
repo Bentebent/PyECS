@@ -18,6 +18,9 @@ class BaseSystem(ABC):
             
         if excluded_components:
             self._exclusive_aspect = self._world.generate_aspect(excluded_components)
+            
+    def clear(self):
+        self._entities.clear()
     
     def entity_changed(self, entity: Entity, old_aspect: Aspect, new_aspect: Aspect) -> None:
         if self._aspect_matches(old_aspect):
@@ -28,10 +31,7 @@ class BaseSystem(ABC):
     
     def _aspect_matches(self, aspect: Aspect) -> bool:
         return ((self._inclusive_aspect & aspect) == self._inclusive_aspect) and ((self._exclusive_aspect & aspect) == 0)
-    
-    def _generate_aspect(self):
-        pass
-    
+
     @abstractmethod
     def run(self, delta_time: float):
         pass

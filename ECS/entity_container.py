@@ -14,7 +14,9 @@ class EntityContainer():
         self._available_entities = []
         
     def clear(self) -> None:
-        pass
+        self._next_entity_id = 0
+        self._entities.reset()
+        self._available_entities.clear()
     
     def create(self) -> Entity:
         entity_id: Entity = -1

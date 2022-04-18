@@ -37,7 +37,10 @@ class World:
         return self._component_container
     
     def clear(self) -> None:
-        pass
+        self._entity_container.clear()
+        self._component_container.clear()
+        self._system_handler.clear()
+        
         
     def run(self, delta_time: float) -> None:
         self._delete_entities()

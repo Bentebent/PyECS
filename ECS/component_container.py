@@ -12,6 +12,10 @@ class ComponentContainer():
         for component_type in component_types:
             self._components[component_type] = SparsePool(component_type, 5120, 1024, 1024, 128)
             
+    def clear(self):
+        for component_type in self._components:
+            self._components[component_type].reset()
+            
     def get_components(self, entity: Entity, component_types: List[Type]) -> Dict:
         result = []
         
